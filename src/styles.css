@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    scroll-behavior: smooth;
+}
+h1,h2,h3,h4,h5,h6 {
+    Font-Family: 'Cormorant Garamond', Serif;
+    Font-Size: 35px;
+}
+p{
+    Font-Family: 'Fira Sans', Sans-Serif;
+Font-Size: 15px;
+}
+* {
+    box-sizing: border-box;
+  }

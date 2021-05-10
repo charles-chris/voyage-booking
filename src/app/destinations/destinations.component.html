@@ -1,0 +1,203 @@
+<section id="destinations" style="padding-top:50px;">
+    <div class="container">
+      <div class="col text-center title"  data-aos="fade-down" data-aos-duration="3000">
+        <h1> Our Destinations </h1>
+      </div>
+      <div class="container">
+        <div class="row p-5">
+          <div class="col image" style="display: flex;height: 450px;" data-aos="fade-down" data-aos-duration="3000">
+            <img src="/assets/15.jpg" class="shadow-lg mb-5 rounded img-fluid image__img">
+            
+          </div>
+          <div class="col-3" data-aos="fade-up" data-aos-duration="3000">
+            <div class="row p-3">
+              <div class="col-6" style="display: block;">
+                <img src="/assets/13.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> Alappuzha</h6>
+                </div>
+                <div class="row">
+                  <p>Kerala</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div>  
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="col-6" style="display: block;">
+                <img src="/assets/14.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> Jog</h6>
+                </div>
+                <div class="row">
+                  <p>Karnataka</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div>  
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="col-6" style="display: block; ">
+                <img src="/assets/17.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> ECR</h6>
+                </div>
+                <div class="row">
+                  <p>Chennai</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <div class="col" style="display: flex;height: 450px;" data-aos="fade-down" data-aos-duration="3000"> 
+            <img src="/assets/16.jpg" class="shadow-lg mb-5 rounded img-fluid">
+          </div>
+          <div class="col-3" data-aos="fade-up" data-aos-duration="3000">
+            <div class="row p-3">
+              <div class="col-6" style="display: block;">
+                <img src="/assets/18.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> Elclaso </h6>
+                </div>
+                <div class="row">
+                  <p>Peru</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div>  
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="col-6" style="display: block;">
+                <img src="/assets/19.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> Rio</h6>
+                </div>
+                <div class="row">
+                  <p>Brazil</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div>  
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="col-6" style="display: block;">
+                <img src="/assets/20.jpg" class="shadow-lg mb-5 rounded img-fluid">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <h6> Cannas</h6>
+                </div>
+                <div class="row">
+                  <p>France</p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-round-sm btn-sm">View Package</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+    <br>
+    <br>
+    <div class="row">
+        <div class="centre">
+            <p>OUR PROPOSALS</p>
+            <h1>OUR DESTINATIONS</h1>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+
+        <div class="col-md-10">
+            <form class="destination-form" #destinationFrom="ngForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="row">
+                    <div class="col-md-4 form">
+                        <div class="form-group">
+                            <label class="col-form-label label1">Destination</label><br>
+                            <select class="form-control" name="destination" [(ngModel)]="desinationModel.destination" required>
+                                <!-- <option value="">Asia</option>  -->
+                                <option *ngFor="let desc of destinations">{{desc}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form">
+                        <div class="form-group">
+                            <label class="col-form-label label1">Typology</label><br>
+                            <select class="form-control" name="typology" [(ngModel)]="desinationModel.typology" required>
+                                 <!-- <option selected>All Typologies</option> -->
+                                <option *ngFor="let typo of typologys">{{typo}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 form">
+                        <div class="form-group">
+                            <label class="col-form-label label1">Duration</label><br>
+                            <select class="form-control" name="duration" [(ngModel)]="desinationModel.duration" required>
+                                <!-- <option selected>6-10 Days</option>  -->
+                                <option *ngFor="let duration of durations">{{ duration }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form">
+                        <div class="form-group">
+                            <label class="col-form-label label1">Difficulty</label><br>
+                            <select class="form-control frm" name="difficulty" [(ngModel)]="desinationModel.difficulty" required>
+                                <!-- <option selected>High</option> -->
+                                <option *ngFor="let diff of difficulty">{{ diff }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form">
+                        <div class="form-group">
+                            <label class="col-form-label label1">Min Age</label><br>
+                            <select class="form-control frm" name="minAge" [(ngModel)]="desinationModel.minAge" required>
+                                <!-- <option selected>8 years</option> -->
+                                <option *ngFor="let minage of min_age">{{ minage }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 form">
+                        <label class="col-form-label" style="color: #fff;">button</label><br>
+                        <button [disabled]="!destinationFrom.valid" type="submit" class="btn btn-primary frm" name="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <br>
+    <br>
+</div>
+
+<!-- {{ destinationFrom.value | json }}
+<br> {{ destinationFrom.valid }}
+
+<hr> {{ desinationModel | json }} -->
+</section>
