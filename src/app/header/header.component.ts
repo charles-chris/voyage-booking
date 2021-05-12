@@ -2,7 +2,7 @@ import { ViewChild } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-header',
@@ -14,13 +14,16 @@ export class HeaderComponent implements OnInit {
   @ViewChild('stickyMenu',{ static: true }) menuElement: ElementRef;
   sticky: boolean = false;
   elementPosition: any;
+  log:boolean;
+  user:string;
+  private userComponent: UserComponent
   constructor() { }
 
   ngOnInit() {
+    this.log = true;
+    this.user = "My Account";
   }
-  ngAfterViewInit(){
-  }
-
+ 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
      if (window.pageYOffset > 50) {

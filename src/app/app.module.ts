@@ -11,7 +11,10 @@ import { DestinationsComponent } from './destinations/destinations.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import {SignUpServiceService} from 'src/app/service/sign-up-service.service';
+import {SignInService} from 'src/app/service/sign-in.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +30,14 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    SignUpServiceService,
+    SignInService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

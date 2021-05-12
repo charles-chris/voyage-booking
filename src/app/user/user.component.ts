@@ -4,6 +4,9 @@ import  AOS  from 'aos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { signIn } from 'src/app/modal/signIn';
 import { signUp } from 'src/app/modal/signUp';
+import {SignUpServiceService} from 'src/app/service/sign-up-service.service';
+import { SignInService } from '../service/sign-in.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -12,9 +15,13 @@ import { signUp } from 'src/app/modal/signUp';
 export class UserComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
+    isLoggedIn: boolean = false;
   constructor(
     public router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private signUpServiceService : SignUpServiceService,
+    private signInService : SignInService,
+    private flashMessage : FlashMessagesService
   ) {}
   signInModel;
   signUpModel;
@@ -34,12 +41,65 @@ export class UserComponent implements OnInit {
 
   }
   onSubmitSignIn() {    
-    console.log(this.signInModel);
+    this.signInService.logIn(this.signInModel.Username,this.signInModel.Password)
+      .subscribe(res => {
+        if(res['statusCode'] == 200)
+        {
+          console.log(res['Message']);
+          this.flashMessage.show(res['Message'], {
+            cssClass: 'alert-success', timeout: 4000,
+          }
+          );
+          this.isLoggedIn = true;
+          this.router.navigate(['/']);
+        }
+        if(res['statusCode'] == 201)
+        {
+          console.log(res['Message']);
+          this.flashMessage.show(res['Message'], {
+            cssClass: 'alert-danger', timeout: 4000
+          });
+          this.isLoggedIn = false;
+        }
+        if(res['statusCode'] == 202)
+        {
+          console.log(res['Message']);
+          this.flashMessage.show(res['Message'], {
+            cssClass: 'alert-danger', timeout: 4000
+          });
+          this.isLoggedIn = false;
+        }
+      }),error => 
+      this.flashMessage.show('You are not registered ', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+      console.log("error")
   }
-  onSubmitSignUp() {    
-    console.log(this.signUpModel);
+  /*onSubmitSignUp() {    
+    this.signUpServiceService.register(this.signUpModel)
+      .subscribe(data => console.log(data), error => console.log(error));
+    //this.order = new Order();
+    //this.gotoList();
+    console.log("Success");
+  }*/
+  onSubmitSignUp() {
+    this.signUpServiceService.register(this.signUpModel)
+      .subscribe(res => {
+        const container = document.querySelector(".contain");
+        if(res['statusCode'] == 100)
+        {
+          console.log(res['Message'])
+          this.flashMessage.show('You are now registered Successfully', {
+            cssClass: 'alert-success', timeout: 4000
+          });
+          container.classList.remove("sign-up-mode");
+        }
+      }),error => 
+      this.flashMessage.show('You are not registered ', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+      console.log("error")
   }
-
   get f() { return this.registerForm.controls; }
 
   back(){
