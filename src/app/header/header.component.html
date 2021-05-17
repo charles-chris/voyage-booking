@@ -1,8 +1,10 @@
+<!--
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top bgcolor">
 		<div class="container">
 			<a class="navbar-brand" href="#banner" ><img src="/assets/2.png" height="50" alt="mdb logo">Adventure Spot</a><button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
+					<flash-messages></flash-messages> 
 					<li class="nav-item">
 						<a class="nav-link" href="#about-us">About us</a>
 					</li>
@@ -15,22 +17,30 @@
 					<li *ngIf="!log" class="nav-item">
 						<a class="nav-link" [routerLink]="['/user']">Login/Register</a>
 					</li>
-					<li *ngIf="log" class="nav-item">
-						<a href="#" class="nav-link">{{ user }}</a>
+					<li *ngIf="log" class="nav-item dropdown">
+						<button href="#" class="nav-link btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user }}</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#here" (click)="onLogout()">Logout</a>
+							<a class="dropdown-item" [routerLink]="['/myAcc']" >My Profile</a>
+
+						  </div>
 					</li>
 				</ul>
 			</div>
+			
 		</div>
 	</nav>
-
+	-->
+	
       <section id="banner" class="banner hero-image">
           <div class="container">
+			
              <div class="row" >
                 <div class="col-md-8 hero-text"   >
                    <h2 style="color: skyblue;">Explore the world on the go</h2>
                     <p style="color: azure;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <a href="#" class = "btnD1">Join Us</a>
-                    <a href="#" class = "btnD1">View Tours</a>
+                    <a [routerLink]="['/destPack']" class = "btnD1">View Tours</a>
                  </div>
               </div>
           </div>

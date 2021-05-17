@@ -1,18 +1,20 @@
-import { ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
 import {AuthServiceService} from 'src/app/service/auth-service.service';
 import {  CookieService  } from 'ngx-cookie-service';  
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ViewChild } from '@angular/core';
+
+
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-nav-bar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.css']
 })
-export class HeaderComponent implements OnInit {
-  @ViewChild('stickyMenu',{ static: true }) menuElement: ElementRef;
+export class NavBarComponent implements OnInit {
+  @ViewChild('stickyMenu',{ static: false }) menuElement: ElementRef;
   sticky: boolean = false;
   elementPosition: any;
   log:boolean;
@@ -56,3 +58,5 @@ export class HeaderComponent implements OnInit {
      }
   }
 }
+
+

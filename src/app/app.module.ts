@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,7 +13,14 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import {SignUpServiceService} from 'src/app/service/sign-up-service.service';
 import {SignInService} from 'src/app/service/sign-in.service';
+import {UserDetailService} from 'src/app/service/user-detail.service';
+import {AuthServiceService} from 'src/app/service/auth-service.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { CookieService } from 'ngx-cookie-service';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { DestPackagesComponent } from './dest-packages/dest-packages.component';
+import {UpdateService} from 'src/app/service/update.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +30,10 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     DestinationsComponent,
     UserComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    MyAccountComponent,
+    DestPackagesComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +45,11 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
   ],
   providers: [
     SignUpServiceService,
-    SignInService
+    SignInService,
+    UserDetailService,
+    AuthServiceService,
+    CookieService,
+    UpdateService
   ],
   bootstrap: [AppComponent]
 })

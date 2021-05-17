@@ -1,14 +1,12 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top bgcolor">
-  <div class="container">
-    <a class="navbar-brand" href="#banner" ><img src="/assets/2.png" height="50" alt="mdb logo">Adventure Spot</a><button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-  </div>
-</nav>
+
 <section id="user">
  <div class="contain">
   <div class="forms-container">
     <div class="signin-signup">
+      
       <form [formGroup]="registerForm" (ngSubmit)="onSubmitSignIn()" class="sign-in-form">
-          <img src="/assets/avatar.svg">
+        <flash-messages></flash-messages>  
+        <img src="/assets/avatar.svg">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
           <i class="fa fa-user" aria-hidden="true"></i>
